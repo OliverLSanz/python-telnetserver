@@ -8,7 +8,7 @@ setup(
   author = 'Oliver L. Sanz',                  
   author_email = 'oliverlsanz@gmail.com', 
   url = 'https://github.com/OliverLSanz/Simple-Python-Telnet-Server/',
-  download_url = 'https://github.com/user/reponame/archive/v_01.tar.gz',    # I explain this later on
+  download_url = 'https://github.com/OliverLSanz/Simple-Python-Telnet-Server/archive/0.1.tar.gz',
   keywords = ['telnet', 'simple', 'server'],
   install_requires=[],
   classifiers=[
