@@ -77,11 +77,11 @@ class TelnetServer(object):
     # list of newly-added occurences
     _new_events = []
 
-    def __init__(self):
+    def __init__(self, encoding="utf-8"):
         """Constructs the TelnetServer object and starts listening for
         new clients.
         """
-
+        self.encoding=encoding
         self._clients = {}
         self._nextid = 0
         self._events = []
@@ -196,12 +196,12 @@ class TelnetServer(object):
     def _attempt_send(self, clid, data):
         # python 2/3 compatability fix - convert non-unicode string to unicode
         if sys.version < '3' and type(data) != unicode:
-            data = unicode(data, "latin1")
+            data = unicode(data, self.encoding)
         try:
             # look up the client in the client map and use 'sendall' to send
             # the message string on the socket. 'sendall' ensures that all of
             # the data is sent in one go
-            self._clients[clid].socket.sendall(bytearray(data, "latin1"))
+            self._clients[clid].socket.sendall(bytearray(data, self.encoding))
         # KeyError will be raised if there is no client with the given id in
         # the map
         except KeyError:
@@ -285,7 +285,7 @@ class TelnetServer(object):
 
             try:
                 # read data from the socket, using a max length of 4096
-                data = cl.socket.recv(4096).decode("latin1")
+                data = cl.socket.recv(4096).decode(self.encoding)
 
                 # process the data, stripping out any special Telnet messages
                 message = self._process_sent_data(cl, data)
