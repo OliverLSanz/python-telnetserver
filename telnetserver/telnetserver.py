@@ -77,11 +77,19 @@ class TelnetServer(object):
     # list of newly-added occurences
     _new_events = []
 
-    def __init__(self, encoding="utf-8"):
+    def __init__(self, encoding="utf-8", error_policy='replace'):
         """Constructs the TelnetServer object and starts listening for
         new clients.
+
+        Args:
+            encoding (str, optional): Enconding of the data to be processed. Valid values are specified here: https://docs.python.org/3/howto/unicode.html. Defaults to "utf-8".
+            error_policy (str, optional): What to do when a character cannot be decoded. Valid values are specified here: https://docs.python.org/3/howto/unicode.html. Defaults to 'replace'.
+
+        Returns:
+            [type]: [description]
         """
-        self.encoding=encoding
+        self.error_policy = error_policy
+        self.encoding = encoding
         self._clients = {}
         self._nextid = 0
         self._events = []
@@ -285,7 +293,7 @@ class TelnetServer(object):
 
             try:
                 # read data from the socket, using a max length of 4096
-                data = cl.socket.recv(4096).decode(self.encoding)
+                data = cl.socket.recv(4096).decode(self.encoding, self.error_policy)
 
                 # process the data, stripping out any special Telnet messages
                 message = self._process_sent_data(cl, data)
