@@ -351,13 +351,6 @@ class TelnetServer(object):
                 if ord(c) == self._TN_INTERPRET_AS_MESSAGE:
                     state = self._READ_STATE_MESSAGE
 
-                # if we get a newline character, this is the end of the
-                # message. Set 'message' to the contents of the buffer and
-                # clear the buffer
-                elif c == "\n":
-                    message = client.buffer
-                    client.buffer = ""
-
                 # some telnet clients send the characters as soon as the user
                 # types them. So if we get a backspace character, this is where
                 # the user has deleted a character and we should delete the
@@ -402,4 +395,6 @@ class TelnetServer(object):
                     state = self._READ_STATE_NORMAL
 
         # return the contents of 'message' which is either a string or None
+        message = client.buffer
+        client.buffer = ""
         return message
