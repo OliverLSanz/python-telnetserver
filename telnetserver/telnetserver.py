@@ -77,13 +77,14 @@ class TelnetServer(object):
     # list of newly-added occurences
     _new_events = []
 
-    def __init__(self, encoding="utf-8", error_policy='replace'):
+    def __init__(self, encoding="utf-8", error_policy='replace', port=1234):
         """Constructs the TelnetServer object and starts listening for
         new clients.
 
         Args:
             encoding (str, optional): Enconding of the data to be processed. Valid values are specified here: https://docs.python.org/3/howto/unicode.html. Defaults to "utf-8".
             error_policy (str, optional): What to do when a character cannot be decoded. Valid values are specified here: https://docs.python.org/3/howto/unicode.html. Defaults to 'replace'.
+            port (int, optional): port for the server.
 
         Returns:
             [type]: [description]
@@ -108,7 +109,7 @@ class TelnetServer(object):
         # this requires root permissions, so we use a higher arbitrary port
         # number instead: 1234. Address 0.0.0.0 means that we will bind to all
         # of the available network interfaces
-        self._listen_socket.bind(("0.0.0.0", 1234))
+        self._listen_socket.bind(("0.0.0.0", port))
 
         # set to non-blocking mode. This means that when we call 'accept', it
         # will return immediately without waiting for a connection
