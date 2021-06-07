@@ -3,13 +3,13 @@ from distutils.core import setup
 setup(
   name = 'telnetserver',         # How you named your package folder (MyLib)
   packages = ['telnetserver'],   # Chose the same as "name"
-  version = '0.3',      # Start with a small number and increase it with every change you make
+  version = '0.5',      # Start with a small number and increase it with every change you make
   license='MIT',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
   description = 'Really simple and easy to use telnet server for small projects.',   # Give a short description about your library
   author = 'Óliver L. Sanz',                   # Type in your name
   author_email = 'oliverlsanz@gmail.com',      # Type in your E-Mail
-  url = 'https://github.com/OliverLSanz/Simple-Python-Telnet-Server',   # Provide either the link to your github or to your website
-  download_url = 'https://github.com/OliverLSanz/Simple-Python-Telnet-Server/archive/v0.3.tar.gz',    # I explain this later on
+  url = 'https://github.com/OliverLSanz/python-telnetserver/',   # Provide either the link to your github or to your website
+  download_url = 'https://github.com/OliverLSanz/python-telnetserver/archive/refs/tags/v0.5.tar.gz',    # I explain this later on
   keywords = ['telnet', 'server', 'simple'],   # Keywords that define your package best
   install_requires=[],
   classifiers=[
