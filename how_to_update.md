@@ -1,0 +1,3 @@
+- Update pyproject.toml
+- Run `python -m build`
+- Run `python -m twine upload dist/*`

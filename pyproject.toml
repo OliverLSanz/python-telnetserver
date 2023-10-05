@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "telnetserver"
+version = "0.6"
+description = "Really simple and easy to use telnet server for small projects."
+readme = "README.md"
+authors = [{ name = "Óliver L. Sanz", email = "oliverlsanz@gmail.com" }]
+license = { file = "LICENSE.txt" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["telnet", "server"]
+dependencies = []
+requires-python = ">=3.8"
+
+[project.optional-dependencies]
+dev = []
+
+[project.urls]
+Homepage = "https://github.com/OliverLSanz/python-telnetserver"
